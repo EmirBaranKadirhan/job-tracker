@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Başvurularım</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+
+
+
+    <div class="container">
+
+        <div style="display: flex; justify-content: space-between;">
+            <div class="header">
+                <h1>İş Başvurularım</h1>
+            </div>
+            <div>
+                <a href="/newJob" class="btn btn-primary">
+                    + Yeni Başvuru
+                </a>
+
+
+                <form action="/auth/logout" method="POST" style="display:inline">
+                    <button class="btn btn-danger">
+                        Çıkış Yap
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+
+            <% if (jobs.length===0) { %>
+
+                <div class="empty">
+                    Henüz başvuru eklenmedi.
+                </div>
+
+
+                <% } else { %>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Şirket</th>
+                                <th>Pozisyon</th>
+                                <th>Durum</th>
+                                <th>Not</th>
+                                <th>Tarih</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <% jobs.forEach(job=> { %>
+                                <!-- ejs ifadesi burada javascript calistirilacagi icin basa eklendi -->
+
+                                <tr>
+                                    <td><strong>
+                                            <%= job.companyName %>
+                                        </strong></td>
+
+                                    <td>
+                                        <%= job.position %>
+                                    </td>
+
+                                    <td>
+                                        <% if (job.status==="Cv Gonderildi" ) { %>
+                                            <span class="status sent">Gönderildi</span>
+                                            <% } else if (job.status==="Red" ) { %>
+                                                <span class="status reject">Red</span>
+                                                <% } else { %>
+                                                    <span class="status meeting">Mülakat</span>
+                                                    <% } %>
+                                    </td>
+
+                                    <td class="note">
+                                        <%= job.notes %>
+                                    </td>
+
+                                    <td>
+                                        <%= new Date(job.createdAt).toLocaleDateString("tr-TR") %>
+                                    </td>
+
+                                    <td>
+                                        <div class="actions">
+
+                                            <a href="editJob/<%= job._id %>" class="btn">
+                                                Düzenle
+                                            </a>
+                                            <!-- asagidaki ?_method = DELETE ==> POST gönder, ama “DELETE say” anlamina gelir cunku html tarafinda delete methodu yoktur -->
+                                            <form action="/index/<%= job._id %>?_method=DELETE" method="POST"
+                                                style="display:inline">
+                                                <button class="btn danger">
+                                                    Sil
+                                                </button>
+                                            </form>
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <% }) %> <!-- ejs ifadesi burada javascript sonlandiracagi icin sona eklendi -->
+                        </tbody>
+                    </table>
+
+                    <% } %>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

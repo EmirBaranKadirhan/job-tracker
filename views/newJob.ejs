@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Yeni Başvuru</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>Yeni Başvuru Ekle</h1>
+
+            <a href="/index" class="btn">
+                ← Listeye Dön
+            </a>
+        </div>
+
+        <div class="card form-card">
+
+            <form action="/newJob" method="POST">
+
+                <div class="form-group">
+                    <label>Şirket Adı</label>
+                    <input class="input" name="companyName" required placeholder="Örn: Google" />
+                </div>
+
+                <div class="form-group">
+                    <label>Pozisyon</label>
+                    <input class="input" name="position" required placeholder="Örn: Backend Developer" />
+                </div>
+
+                <div class="form-group">
+                    <label>Durum</label>
+                    <select name="status">
+                        <option value="Cv Gonderildi">Cv Gönderildi</option>
+                        <option value="Mulakat">Mülakat</option>
+                        <option value="Red">Red</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Notlar</label>
+                    <textarea name="notes" placeholder="Başvuru ile ilgili notlar..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        Kaydet
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

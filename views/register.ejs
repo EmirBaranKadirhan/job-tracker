@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kayıt Ol</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="registerWord">Kayıt Ol</h1>
+
+        <form action="/auth/register" method="POST">
+            <div class="form-group">
+                <label>Kullanıcı Adı</label>
+                <input name="username" required />
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+                <label>Şifre</label>
+                <input type="password" name="password" minlength="6" required />
+            </div>
+
+            <button class="btn-primary" type="submit">Kayıt Ol</button>
+        </form>
+
+        <div class="helper">
+            Hesabın var mı? <a href="/auth/login">Giriş yap</a>
+        </div>
+    </div>
+</body>
+
+</html>

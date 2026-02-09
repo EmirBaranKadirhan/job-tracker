@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giris Yap</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="registerWord">Giris Yap</h1>
+
+        <form action="/auth/login" method="POST">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+                <label>Şifre</label>
+                <input type="password" name="password" minlength="6" required />
+            </div>
+
+            <button class="btn-primary" type="submit">Giris Yap</button>
+        </form>
+
+        <div class="helper">
+            Hesabın yok mu? <a href="/auth/register">Kayıt Ol</a>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Başvuruyu Düzenle</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>Başvuruyu Düzenle</h1>
+
+            <a href="/index " class="btn">
+                ← Listeye Dön
+            </a>
+        </div>
+
+        <div class="card form-card">
+
+            <form action="/editJob/<%= job._id %>?_method=PUT" method="POST">
+
+                <div class="form-group">
+                    <label>Şirket Adı</label>
+                    <input class="input" name="companyName" value="<%= job.companyName %>" required />
+                </div>
+
+                <div class="form-group">
+                    <label>Pozisyon</label>
+                    <input class="input" name="position" value="<%= job.position %>" required />
+                </div>
+
+                <div class="form-group">
+                    <label>Durum</label>
+                    <select name="status">
+                        <option value="Cv Gonderildi" <%=job.status==="Cv Gonderildi" ? "selected" : "" %>>
+                            Cv Gönderildi
+                        </option>
+
+                        <option value="Mulakat" <%=job.status==="Mulakat" ? "selected" : "" %>>
+                            Mülakat
+                        </option>
+
+                        <option value="Red" <%=job.status==="Red" ? "selected" : "" %>>
+                            Red
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Notlar</label>
+                    <textarea name="notes"><%= job.notes %></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        Güncelle
+                    </button>
+
+                    <a href="/" class="btn">
+                        İptal
+                    </a>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
