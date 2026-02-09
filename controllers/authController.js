@@ -32,6 +32,19 @@ const registerPost = async (req, res) => {
         })
 
         await newUser.save()      // yeni kullaniciyi veritabanina kaydet
+
+        // kayit isleminden sonra da token olusturup cookie'ye koyuyoruz
+        const token = jwt.sign({
+            userId: newUser._id         // mongoose ile her yeni dokumana id verildigi icin bizde buradan ulasabiliyoruz
+        },
+            process.env.JWT_SECRET,
+            { expiresIn: '7d' }
+        )
+
+        res.cookie('token', token, {
+            httpOnly: true
+        })
+
         return res.redirect('/index');     // kayit islemi basarili ise login sayfasina yonlendir
 
     } catch (err) {
