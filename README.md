@@ -108,6 +108,11 @@ JOBTRACKER/
 │   ├── authRoutes.js
 │   └── jobRoutes.js
 ├── views/
+│   ├── editJob.ejs
+│   └── index.ejs
+│   └── login.ejs
+│   └── newJob.ejs
+│   └── register.ejs
 ├── screenshots/
 ├── app.js
 ├── package.json
