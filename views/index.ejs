@@ -88,15 +88,14 @@
                                     <td>
                                         <div class="actions">
 
-                                            <a href="editJob/<%= job._id %>" class="btn">
+                                            <a href="/editJob/<%= job._id %>" class="btn">
                                                 Düzenle
                                             </a>
                                             <!-- asagidaki ?_method = DELETE ==> POST gönder, ama “DELETE say” anlamina gelir cunku html tarafinda delete methodu yoktur -->
-                                            <form action="/index/<%= job._id %>?_method=DELETE" method="POST"
-                                                style="display:inline">
-                                                <button class="btn danger">
-                                                    Sil
-                                                </button>
+                                            <form action="/index/<%= job._id %>" method="POST" style="display:inline">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button class="btn danger"
+                                                    onclick="return confirm('Silmek istediğine emin misin?')">Sil</button>
                                             </form>
 
                                         </div>

@@ -10,13 +10,17 @@ const authRoutes = require('./routes/authRoutes')
 
 const app = express()
 
-connectDB()
+
 
 // middleware
 app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: true }))         // form verisini alabilmek icin
 app.use(express.json())
-app.use(methodOverride('_method'))
+app.use(methodOverride((req, res) {
+    if (req.body && typeof req.body._method === 'string') {
+        return req.body._method;
+    }
+}));
 app.use(cookieParser())                         // req.cookies için
 
 // static
