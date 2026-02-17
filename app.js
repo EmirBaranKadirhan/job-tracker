@@ -32,6 +32,16 @@ app.use('/', jobRoutes)             // "/" ile başlayan bütün istekleri jobRo
 
 
 
-app.listen(PORT, () => {
-    console.log(`Server ayaga kalkti - ${PORT}`);
-});
+const start = async () => {
+    try {
+        await connectDB();  // burada hata atarsa aşağıdaki listen çalışmaz
+        app.listen(PORT, () => {
+            console.log(`Server ayaga kalkti - ${PORT}`);
+        });
+    } catch (err) {
+        console.error('DB bağlantısı başarısız, uygulama başlatılmadı.', err);
+        process.exit(1);    // deploy'un "failed" olarak görünmesini sağlar
+    }
+};
+
+start();

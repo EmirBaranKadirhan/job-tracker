@@ -6,7 +6,14 @@ const authNewJobMiddleware = require('../middlewares/authMiddleware')
 
 router.get("/index", authNewJobMiddleware, companyList.showCompanyList)
 
-
+router.get('/', (req, res) => {
+    const token = req.cookies ? req.cookies.token : undefined;
+    if (token) {
+        // opsiyonel: token doğrulamak istersen try/catch ile jwt.verify yap
+        return res.redirect('/index');
+    }
+    return res.redirect('/auth/login');
+});
 
 
 router.get("/newJob", (req, res) => {
