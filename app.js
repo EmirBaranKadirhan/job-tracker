@@ -16,7 +16,7 @@ const app = express()
 app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: true }))         // form verisini alabilmek icin
 app.use(express.json())
-app.use(methodOverride((req, res) {
+app.use(methodOverride((req, res) => {
     if (req.body && typeof req.body._method === 'string') {
         return req.body._method;
     }
