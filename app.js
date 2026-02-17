@@ -22,7 +22,7 @@ app.use(cookieParser())                         // req.cookies için
 // static
 app.use(express.static('public'))
 
-const PORT = 3000
+const PORT = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
 
@@ -33,5 +33,5 @@ app.use('/', jobRoutes)             // "/" ile başlayan bütün istekleri jobRo
 
 
 app.listen(PORT, () => {
-    console.log("Server ayaga kalkti")
-})
+    console.log(`Server ayaga kalkti - ${PORT}`);
+});
