@@ -124,20 +124,28 @@ JOBTRACKER/
 
 ## 🚀 Getting Started
 
-### 1) Clone the Repository
+### 1) Live Access
+
+
+**[Job Tracker - Live Link](https://job-tracker-ye18.onrender.com/auth/login)**
+
+
+### 2) Local Installation
+
+  ## Clone the Repository
 
 ```
 git clone https://github.com/EmirBaranKadirhan/job-tracker.git
 cd job-tracker
 ```
 
-### 2) Install Dependencies
+## Install Dependencies
 
 ```
 npm install
 ```
 
-### 3) Configure Environment Variables
+### Configure Environment Variables
 
 Create a `.env` file in the project root:
 
@@ -151,7 +159,7 @@ Example configuration is provided in `.env.example`
 
 ---
 
-### 4) Run the Application
+## Run the Application
 
 ```
 npm start
